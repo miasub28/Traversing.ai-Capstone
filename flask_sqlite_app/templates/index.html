@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World Database</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #333; }
+        ul { list-style: none; padding: 0; }
+        li { background: #f4f4f4; margin: 5px 0; padding: 10px; border-radius: 4px; }
+        form { margin-top: 20px; }
+        input[type="text"] { padding: 8px; width: 200px; }
+        button { padding: 8px 12px; margin-left: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Hello World Messages</h1>
+
+    <ul>
+        {% for msg in messages %}
+        <li>{{ msg['id'] }}: {{ msg['message'] }}</li>
+        {% else %}
+        <li>No messages yet!</li>
+        {% endfor %}
+    </ul>
+
+    <form action="/add" method="POST">
+        <input type="text" name="message" placeholder="Type a message" required>
+        <button type="submit">Add Message</button>
+    </form>
+
+    <form action="/clear" method="POST" style="margin-top:10px;">
+        <button type="submit" style="background:red;color:white;">Clear All</button>
+    </form>
+</body>
+</html>
